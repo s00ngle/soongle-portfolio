@@ -13,7 +13,7 @@ export interface Activity {
   title: string;
   organization: string;
   period: string;
-  desc: string;
+  desc: string[];
 }
 
 export interface Award {

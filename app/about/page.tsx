@@ -96,23 +96,23 @@ const AboutPage = () => {
       </section>
 
       <section className="flex flex-col gap-6">
-        <h2 className="text-2xl font-bold tracking-tight">Awards</h2>
-        {loadingAwards ? (
-          <Loading />
-        ) : (
-          <FadeIn>
-            <AwardContainer awards={awards} />
-          </FadeIn>
-        )}
-      </section>
-
-      <section className="flex flex-col gap-6">
         <h2 className="text-2xl font-bold tracking-tight">Certificates</h2>
         {loadingCertificates ? (
           <Loading />
         ) : (
           <FadeIn>
             <CertificateContainer certificates={certificates} />
+          </FadeIn>
+        )}
+      </section>
+
+      <section className="flex flex-col gap-6">
+        <h2 className="text-2xl font-bold tracking-tight">Awards</h2>
+        {loadingAwards ? (
+          <Loading />
+        ) : (
+          <FadeIn>
+            <AwardContainer awards={awards} />
           </FadeIn>
         )}
       </section>
