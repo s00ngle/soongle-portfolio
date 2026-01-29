@@ -1,0 +1,39 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { Project } from "@/types/projects";
+
+import ProjectContainer from "@/components/projects/ProjectContainer";
+
+const ProjectsPage = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch("/api/projects");
+        const data = await response.json();
+        setProjects(data);
+      } catch (error) {
+        console.error("Failed to fetch projects:", error);
+      }
+    };
+    fetchProjects();
+  }, []);
+
+  return (
+    <div className="flex flex-col gap-12 py-12">
+      <section className="flex flex-col gap-4">
+        <h1 className="text-3xl font-bold tracking-tight">Projects</h1>
+        <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          지금까지 진행한 주요 프로젝트들입니다. 각 프로젝트 이미지를 클릭하면
+          상세 내용을 확인하실 수 있습니다.
+        </p>
+      </section>
+
+      <ProjectContainer projects={projects} />
+    </div>
+  );
+};
+
+export default ProjectsPage;

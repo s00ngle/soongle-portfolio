@@ -1,65 +1,72 @@
-import Image from "next/image";
+"use client";
+
+import Badge from "@/components/common/Badge";
+import { motion } from "framer-motion";
 
 export default function Home() {
+  const containerVars = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVars = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } as any,
+    },
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <motion.div
+      className="flex flex-col items-center justify-center pt-24 pb-12"
+      variants={containerVars}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div variants={itemVars}>
+        <Badge
+          backgroundColor="bg-transparent"
+          textColor="text-blue-500"
+          borderColor="border-blue-500"
+          size="md"
+        >
+          Front-end Developer
+        </Badge>
+      </motion.div>
+      <motion.h1
+        variants={itemVars}
+        className="text-5xl sm:text-7xl font-bold tracking-tight text-center mt-2 mb-6 leading-snug"
+      >
+        안녕하세요,
+        <br />
+        <span className="text-blue-500">프론트엔드</span> 개발자
+        <br />
+        <span className="text-gray-500">김용순</span>입니다.
+      </motion.h1>
+      <motion.p
+        variants={itemVars}
+        className="max-w-xl text-lg text-neutral-600 dark:text-neutral-400 text-center leading-relaxed"
+      >
+        사용자 경험을 최우선으로 생각하며, 깔끔하고 효율적인 코드를 작성하는
+        것을 목표로 합니다. 함께 세상을 놀라게 할 프로젝트를 만들어가고
+        싶습니다.
+      </motion.p>
+      <motion.div variants={itemVars} className="mt-10 flex gap-4">
+        <button className="px-6 py-2.5 rounded-full bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 font-medium hover:scale-105 transition-transform cursor-pointer">
+          프로젝트 보기
+        </button>
+        <button className="px-6 py-2.5 rounded-full border border-(--border) font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer">
+          문의하기
+        </button>
+      </motion.div>
+    </motion.div>
   );
 }
