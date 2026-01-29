@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     siteName: "Soongle Portfolio",
-    url: "https://soongle.com",
+    url: "https://soongle-portfolio.vercel.app/",
     images: [
       {
-        url: "https://soongle.com/soongle-blog-og-image.png",
+        url: "https://soongle-portfolio.vercel.app/soongle-blog-og-image.png",
         width: 1200,
         height: 630,
         alt: "Soongle Portfolio",
