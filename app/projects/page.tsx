@@ -1,25 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Project } from "@/types/projects";
+import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 
 import ProjectContainer from "@/components/projects/ProjectContainer";
+import Loading from "@/components/common/Loading";
+
+const FadeIn = ({ children }: { children: React.ReactNode }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+  >
+    {children}
+  </motion.div>
+);
+
+const fetchProjects = async () => {
+  const response = await fetch("/api/projects");
+  return response.json();
+};
 
 const ProjectsPage = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch("/api/projects");
-        const data = await response.json();
-        setProjects(data);
-      } catch (error) {
-        console.error("Failed to fetch projects:", error);
-      }
-    };
-    fetchProjects();
-  }, []);
+  const { data: projects = [], isLoading } = useQuery({
+    queryKey: ["projects"],
+    queryFn: fetchProjects,
+  });
 
   return (
     <div className="flex flex-col gap-12 py-12">
@@ -31,7 +37,13 @@ const ProjectsPage = () => {
         </p>
       </section>
 
-      <ProjectContainer projects={projects} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <FadeIn>
+          <ProjectContainer projects={projects} />
+        </FadeIn>
+      )}
     </div>
   );
 };

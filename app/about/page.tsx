@@ -20,27 +20,22 @@ const FadeIn = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
-// Fetcher functions with artificial delays for testing
 const fetchSkills = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 300));
   const res = await fetch("/api/about/skills");
   return res.json();
 };
 
 const fetchActivities = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 600));
   const res = await fetch("/api/about/activities");
   return res.json();
 };
 
 const fetchAwards = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 900));
   const res = await fetch("/api/about/awards");
   return res.json();
 };
 
 const fetchCertificates = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1200));
   const res = await fetch("/api/about/certificates");
   return res.json();
 };
