@@ -13,7 +13,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Soongle",
+  title: "김용순 포트폴리오",
   description: "Soongle Portfolio - Frontend Developer",
   keywords: [
     "Soongle",
@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     "frontend",
   ],
   authors: [{ name: "Soongle", url: "https://github.com/s00ngle" }],
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "김용순 포트폴리오",
     description: "프론트엔드 개발자 김용순 포트폴리오",
