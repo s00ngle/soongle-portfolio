@@ -1,8 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Skill, Activity, Award, Certificate } from "@/types/about";
-
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 
 import SkillContainer from "@/components/about/SkillContainer";
@@ -22,71 +20,51 @@ const FadeIn = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
+// Fetcher functions with artificial delays for testing
+const fetchSkills = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  const res = await fetch("/api/about/skills");
+  return res.json();
+};
+
+const fetchActivities = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 600));
+  const res = await fetch("/api/about/activities");
+  return res.json();
+};
+
+const fetchAwards = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 900));
+  const res = await fetch("/api/about/awards");
+  return res.json();
+};
+
+const fetchCertificates = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1200));
+  const res = await fetch("/api/about/certificates");
+  return res.json();
+};
+
 const AboutPage = () => {
-  const [loadingSkills, setLoadingSkills] = useState(true);
-  const [loadingActivities, setLoadingActivities] = useState(true);
-  const [loadingAwards, setLoadingAwards] = useState(true);
-  const [loadingCertificates, setLoadingCertificates] = useState(true);
+  const { data: skills = [], isLoading: loadingSkills } = useQuery({
+    queryKey: ["skills"],
+    queryFn: fetchSkills,
+  });
 
-  const [skills, setSkills] = useState<Skill[]>([]);
-  const [activities, setActivities] = useState<Activity[]>([]);
-  const [awards, setAwards] = useState<Award[]>([]);
-  const [certificates, setCertificates] = useState<Certificate[]>([]);
+  const { data: activities = [], isLoading: loadingActivities } = useQuery({
+    queryKey: ["activities"],
+    queryFn: fetchActivities,
+  });
 
-  useEffect(() => {
-    const fetchSkills = async () => {
-      try {
-        const res = await fetch("/api/about/skills");
-        const data = await res.json();
-        setSkills(data);
-      } catch (error) {
-        console.error("Failed to fetch skills:", error);
-      } finally {
-        setLoadingSkills(false);
-      }
-    };
+  const { data: awards = [], isLoading: loadingAwards } = useQuery({
+    queryKey: ["awards"],
+    queryFn: fetchAwards,
+  });
 
-    const fetchActivities = async () => {
-      try {
-        const res = await fetch("/api/about/activities");
-        const data = await res.json();
-        setActivities(data);
-      } catch (error) {
-        console.error("Failed to fetch activities:", error);
-      } finally {
-        setLoadingActivities(false);
-      }
-    };
-
-    const fetchAwards = async () => {
-      try {
-        const res = await fetch("/api/about/awards");
-        const data = await res.json();
-        setAwards(data);
-      } catch (error) {
-        console.error("Failed to fetch awards:", error);
-      } finally {
-        setLoadingAwards(false);
-      }
-    };
-
-    const fetchCertificates = async () => {
-      try {
-        const res = await fetch("/api/about/certificates");
-        const data = await res.json();
-        setCertificates(data);
-      } catch (error) {
-        console.error("Failed to fetch certificates:", error);
-      } finally {
-        setLoadingCertificates(false);
-      }
-    };
-
-    fetchSkills();
-    fetchActivities();
-    fetchAwards();
-    fetchCertificates();
-  }, []);
+  const { data: certificates = [], isLoading: loadingCertificates } = useQuery({
+    queryKey: ["certificates"],
+    queryFn: fetchCertificates,
+  });
 
   return (
     <div className="flex flex-col gap-12 py-12">
