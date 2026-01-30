@@ -3,10 +3,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 
-import SkillContainer from "@/components/about/SkillContainer";
-import ActivityContainer from "@/components/about/ActivityContainer";
-import AwardContainer from "@/components/about/AwardContainer";
-import CertificateContainer from "@/components/about/CertificateContainer";
+import InfoContainer from "@/components/about/Introduce/InfoContainer";
+import SkillContainer from "@/components/about/Skill/SkillContainer";
+import ActivityContainer from "@/components/about/Activity/ActivityContainer";
+import AwardContainer from "@/components/about/Award/AwardContainer";
+import CertificateContainer from "@/components/about/Certificate/CertificateContainer";
 
 import Loading from "@/components/common/Loading";
 
@@ -63,16 +64,10 @@ const AboutPage = () => {
 
   return (
     <div className="flex flex-col gap-12 py-12">
-      <section className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Introduce</h1>
-        <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          안녕하세요! 저는 복잡한 문제를 단순하고 직관적인 코드로 해결하는 것을
-          즐기는 프론트엔드 개발자입니다. 최신 웹 기술을 탐구하고 실제
-          프로젝트에 적용하여 더 나은 사용자 경험을 만드는 데 열정을 가지고
-          있습니다.
-        </p>
-      </section>
+      {/* Introduce */}
+      <InfoContainer />
 
+      {/* Tools & Skills */}
       <section className="flex flex-col gap-6">
         <h2 className="text-2xl font-bold tracking-tight">Tools & Skills</h2>
         {loadingSkills ? (
@@ -84,6 +79,7 @@ const AboutPage = () => {
         )}
       </section>
 
+      {/* Activities */}
       <section className="flex flex-col gap-4">
         <h2 className="text-2xl font-semibold">Activities</h2>
         {loadingActivities ? (
@@ -95,6 +91,7 @@ const AboutPage = () => {
         )}
       </section>
 
+      {/* Certificates */}
       <section className="flex flex-col gap-6">
         <h2 className="text-2xl font-bold tracking-tight">Certificates</h2>
         {loadingCertificates ? (
@@ -106,6 +103,7 @@ const AboutPage = () => {
         )}
       </section>
 
+      {/* Awards */}
       <section className="flex flex-col gap-6">
         <h2 className="text-2xl font-bold tracking-tight">Awards</h2>
         {loadingAwards ? (

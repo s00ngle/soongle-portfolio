@@ -1,6 +1,6 @@
 "use client";
 
-import AwardCard from "@/components/about/AwardCard";
+import AwardCard from "@/components/about/Award/AwardCard";
 import { Award } from "@/types/about";
 
 interface AwardContainerProps {

@@ -1,6 +1,6 @@
 "use client";
 
-import CertificateCard from "@/components/about/CertificateCard";
+import CertificateCard from "@/components/about/Certificate/CertificateCard";
 import { Certificate } from "@/types/about";
 
 interface CertificateContainerProps {

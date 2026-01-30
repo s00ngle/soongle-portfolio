@@ -59,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${pretendard.variable} antialiased mx-auto w-full max-w-4xl min-h-screen`}
+        className={`${pretendard.variable} antialiased mx-auto w-full max-w-4xl min-h-screen min-w-80`}
         suppressHydrationWarning
       >
         <Providers>

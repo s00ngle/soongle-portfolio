@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import SkillCard from "@/components/about/SkillCard";
+import SkillCard from "@/components/about/Skill/SkillCard";
 import { Skill, SkillCategory } from "@/types/about";
 import { useExpandableSection } from "@/hooks/about/useExpandableSection";
 import { MAX_HEIGHT_FOR_3_ROWS } from "@/types/about";

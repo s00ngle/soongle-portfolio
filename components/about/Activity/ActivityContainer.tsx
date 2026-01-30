@@ -1,6 +1,6 @@
 "use client";
 
-import ActivityCard from "@/components/about/ActivityCard";
+import ActivityCard from "@/components/about/Activity/ActivityCard";
 import { Activity } from "@/types/about";
 
 interface ActivityContainerProps {
