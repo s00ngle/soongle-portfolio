@@ -45,10 +45,10 @@ export const awards: Award[] = [
   },
   {
     title: "RoboCup Korea Open",
-    rank: "Best Research Award",
+    rank: "Best Research",
     organization: "한국로보컵협회",
     date: "2016.02.27",
-    desc: "기술 연구 및 논리적 접근 방식에 대한 우수성 인정",
+    desc: "축구 로봇 연구에 대한 우수성 인정, 세계대회 진출",
   },
   {
     title: "한민고 정보 활용대회",

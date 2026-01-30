@@ -29,3 +29,12 @@ export interface Certificate {
   date: string;
   grade: string;
 }
+
+export const SKILL_CATEGORIES: { id: SkillCategory; label: string }[] = [
+  { id: "Language", label: "Languages" },
+  { id: "Frontend", label: "Frontend" },
+  { id: "Backend", label: "Backend" },
+  { id: "Tool", label: "Tools" },
+];
+
+export const MAX_HEIGHT_FOR_3_ROWS = 3 * 44 + 2 * 12; // 44px per row + 12px gap
