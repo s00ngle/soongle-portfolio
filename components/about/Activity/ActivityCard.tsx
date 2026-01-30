@@ -9,15 +9,19 @@ interface ActivityCardProps {
 const ActivityCard = ({ activity }: ActivityCardProps) => {
   return (
     <div className="relative">
-      <div className="absolute w-3 h-3 bg-neutral-900 dark:bg-neutral-100 rounded-full -left-[31px] top-1.5" />
+      <div className="absolute w-3 h-3 bg-neutral-900 dark:bg-neutral-100 rounded-full -left-7.75 top-1.5" />
       <h3 className="text-lg font-bold">{activity.title}</h3>
-      <div className="text-neutral-600 dark:text-neutral-400 mb-2">
+      <div className="text-neutral-600 dark:text-neutral-400">
         {activity.organization}
       </div>
-      <div className="text-sm text-neutral-500 mb-1">{activity.period}</div>
-      <ul className="list-disc list-inside text-neutral-500 text-base space-y-1">
+      <div className="text-sm mb-2 text-neutral-600 dark:text-neutral-400">
+        {activity.period}
+      </div>
+      <ul className="list-disc list-inside text-base space-y-1 text-neutral-700 dark:text-neutral-300">
         {activity.desc.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index} className="">
+            {item}
+          </li>
         ))}
       </ul>
     </div>
