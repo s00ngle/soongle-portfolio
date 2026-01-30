@@ -31,7 +31,18 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Soongle", url: "https://github.com/s00ngle" }],
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      {
+        media: "(prefers-color-scheme: light)",
+        url: "/icons/favicon-light.svg",
+        href: "/icons/favicon-light.svg",
+      },
+      {
+        media: "(prefers-color-scheme: dark)",
+        url: "/icons/favicon-dark.svg",
+        href: "/icons/favicon-dark.svg",
+      },
+    ],
   },
   openGraph: {
     title: "김용순 포트폴리오",
