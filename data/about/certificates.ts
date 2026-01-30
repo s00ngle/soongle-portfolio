@@ -11,4 +11,9 @@ export const certificates: Certificate[] = [
     date: "2024.06.02",
     grade: "IM3",
   },
+  {
+    title: "자동차 운전면허증",
+    date: "2017.12.07",
+    grade: "1종 보통",
+  },
 ];
