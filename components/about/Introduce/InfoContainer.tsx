@@ -51,53 +51,48 @@ const InfoContainer = () => {
         <Alert message={alertMessage} onClose={() => setAlertMessage(null)} />
       )}
 
-      <section className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Introduce</h1>
-
-        <div className="flex flex-col gap-2 rounded-xl p-2 border border-neutral-200 dark:border-neutral-800 bg-neutral-100/50 dark:bg-neutral-900/50">
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:px-6 py-3">
-            <div className="flex items-center gap-4 pl-4 sm:pl-0">
-              <Image
-                src={ProfileImage}
-                alt="profile"
-                width={120}
-                height={120}
-                className="rounded-lg border border-neutral-300 dark:border-neutral-700"
-              />
-              <div className="flex flex-col gap-2 sm:scale-100 scale-90 transition-discrete duration-300">
-                <h2 className="font-bold text-4xl whitespace-nowrap">김용순</h2>
-                <div>
-                  <p className="text-base text-neutral-500 dark:text-neutral-400">
-                    1999.08.15
-                  </p>
-                  <p className="text-lg font-medium text-neutral-500 dark:text-neutral-400">
-                    Frontend Developer
-                  </p>
-                </div>
+      <div className="flex flex-col gap-2 rounded-xl p-2 border border-neutral-200 dark:border-neutral-800 bg-neutral-100/50 dark:bg-neutral-900/50">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:px-6 py-3">
+          <div className="flex items-center gap-4 pl-4 sm:pl-0">
+            <Image
+              src={ProfileImage}
+              alt="profile"
+              width={120}
+              height={120}
+              className="rounded-lg border border-neutral-300 dark:border-neutral-700"
+            />
+            <div className="flex flex-col gap-2 sm:scale-100 scale-90 transition-discrete duration-300">
+              <h2 className="font-bold text-4xl whitespace-nowrap">김용순</h2>
+              <div>
+                <p className="text-base text-neutral-500 dark:text-neutral-400">
+                  1999.08.15
+                </p>
+                <p className="text-lg font-medium text-neutral-500 dark:text-neutral-400">
+                  Frontend Developer
+                </p>
               </div>
             </div>
+          </div>
 
-            <ResumeDownloadButton />
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            {infoButtons.map((button, index) => (
-              <InfoButton
-                key={index}
-                text={button.text}
-                icon={button.icon}
-                onClick={button.onClick}
-              />
-            ))}
-          </div>
+          <ResumeDownloadButton />
         </div>
+        <div className="grid grid-cols-3 gap-2">
+          {infoButtons.map((button, index) => (
+            <InfoButton
+              key={index}
+              text={button.text}
+              icon={button.icon}
+              onClick={button.onClick}
+            />
+          ))}
+        </div>
+      </div>
 
-        <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          안녕하세요! 저는 복잡한 문제를 단순하고 직관적인 코드로 해결하는 것을
-          즐기는 프론트엔드 개발자입니다. 최신 웹 기술을 탐구하고 실제
-          프로젝트에 적용하여 더 나은 사용자 경험을 만드는 데 열정을 가지고
-          있습니다.
-        </p>
-      </section>
+      <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        안녕하세요! 저는 복잡한 문제를 단순하고 직관적인 코드로 해결하는 것을
+        즐기는 프론트엔드 개발자입니다. 최신 웹 기술을 탐구하고 실제 프로젝트에
+        적용하여 더 나은 사용자 경험을 만드는 데 열정을 가지고 있습니다.
+      </p>
     </>
   );
 };

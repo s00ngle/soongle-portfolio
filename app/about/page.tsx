@@ -10,6 +10,7 @@ import AwardContainer from "@/components/about/Award/AwardContainer";
 import CertificateContainer from "@/components/about/Certificate/CertificateContainer";
 
 import Loading from "@/components/common/Loading";
+import ScrollNavigator from "@/components/about/ScrollNavigator";
 
 const FadeIn = ({ children }: { children: React.ReactNode }) => (
   <motion.div
@@ -63,58 +64,64 @@ const AboutPage = () => {
   });
 
   return (
-    <div className="flex flex-col gap-12 py-12">
-      {/* Introduce */}
-      <InfoContainer />
+    <>
+      <ScrollNavigator />
+      <div className="flex flex-col gap-12 py-12">
+        {/* Introduce */}
+        <section id="introduce" className="flex flex-col gap-4">
+          <h1 className="text-3xl font-bold tracking-tight">Introduce</h1>
+          <InfoContainer />
+        </section>
 
-      {/* Tools & Skills */}
-      <section className="flex flex-col gap-6">
-        <h2 className="text-2xl font-bold tracking-tight">Tools & Skills</h2>
-        {loadingSkills ? (
-          <Loading />
-        ) : (
-          <FadeIn>
-            <SkillContainer skills={skills} />
-          </FadeIn>
-        )}
-      </section>
+        {/* Tools & Skills */}
+        <section id="skills" className="flex flex-col gap-6">
+          <h2 className="text-2xl font-bold tracking-tight">Tools & Skills</h2>
+          {loadingSkills ? (
+            <Loading />
+          ) : (
+            <FadeIn>
+              <SkillContainer skills={skills} />
+            </FadeIn>
+          )}
+        </section>
 
-      {/* Activities */}
-      <section className="flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold">Activities</h2>
-        {loadingActivities ? (
-          <Loading />
-        ) : (
-          <FadeIn>
-            <ActivityContainer activities={activities} />
-          </FadeIn>
-        )}
-      </section>
+        {/* Certificates */}
+        <section id="certificates" className="flex flex-col gap-6">
+          <h2 className="text-2xl font-bold tracking-tight">Certificates</h2>
+          {loadingCertificates ? (
+            <Loading />
+          ) : (
+            <FadeIn>
+              <CertificateContainer certificates={certificates} />
+            </FadeIn>
+          )}
+        </section>
 
-      {/* Certificates */}
-      <section className="flex flex-col gap-6">
-        <h2 className="text-2xl font-bold tracking-tight">Certificates</h2>
-        {loadingCertificates ? (
-          <Loading />
-        ) : (
-          <FadeIn>
-            <CertificateContainer certificates={certificates} />
-          </FadeIn>
-        )}
-      </section>
+        {/* Awards */}
+        <section id="awards" className="flex flex-col gap-6">
+          <h2 className="text-2xl font-bold tracking-tight">Awards</h2>
+          {loadingAwards ? (
+            <Loading />
+          ) : (
+            <FadeIn>
+              <AwardContainer awards={awards} />
+            </FadeIn>
+          )}
+        </section>
 
-      {/* Awards */}
-      <section className="flex flex-col gap-6">
-        <h2 className="text-2xl font-bold tracking-tight">Awards</h2>
-        {loadingAwards ? (
-          <Loading />
-        ) : (
-          <FadeIn>
-            <AwardContainer awards={awards} />
-          </FadeIn>
-        )}
-      </section>
-    </div>
+        {/* Activities */}
+        <section id="activities" className="flex flex-col gap-4">
+          <h2 className="text-2xl font-semibold">Activities</h2>
+          {loadingActivities ? (
+            <Loading />
+          ) : (
+            <FadeIn>
+              <ActivityContainer activities={activities} />
+            </FadeIn>
+          )}
+        </section>
+      </div>
+    </>
   );
 };
 
