@@ -43,7 +43,7 @@ export const metadata: Metadata = {
         href: "/icons/favicon-dark.svg",
       },
     ],
-    apple: "/icons/favicon.png",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "김용순 포트폴리오",
