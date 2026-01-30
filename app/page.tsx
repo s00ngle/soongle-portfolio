@@ -1,7 +1,7 @@
 "use client";
 
 import Badge from "@/components/common/Badge";
-import { motion } from "framer-motion";
+import { motion, cubicBezier } from "framer-motion";
 
 export default function Home() {
   const containerVars = {
@@ -20,7 +20,7 @@ export default function Home() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } as any,
+      transition: { duration: 0.5, ease: cubicBezier(0.22, 1, 0.36, 1) },
     },
   };
 
