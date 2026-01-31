@@ -63,6 +63,13 @@ const AboutPage = () => {
     queryFn: fetchCertificates,
   });
 
+  // 모든 데이터 로딩 완료 여부 확인
+  const isAllDataLoaded =
+    !loadingSkills &&
+    !loadingActivities &&
+    !loadingAwards &&
+    !loadingCertificates;
+
   return (
     <>
       <div className="flex flex-col gap-12 py-12">
@@ -120,7 +127,8 @@ const AboutPage = () => {
           )}
         </section>
       </div>
-      <ScrollNavigator />
+      {/* 모든 데이터 로딩 완료 후에만 네비게이터 표시 */}
+      {isAllDataLoaded && <ScrollNavigator />}
     </>
   );
 };
