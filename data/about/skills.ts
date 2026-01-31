@@ -92,16 +92,22 @@ export const skills: Skill[] = [
 
   // Backend
   {
+    name: "FastAPI",
+    category: "Backend",
+    level: "Beginner",
+    icon: "python",
+  },
+  {
     name: "Spring Boot",
     category: "Backend",
     level: "Beginner",
     icon: "spring",
   },
   {
-    name: "FastAPI",
+    name: "MySQL",
     category: "Backend",
-    level: "Beginner",
-    icon: "python",
+    level: "Intermediate",
+    icon: "mysql",
   },
 
   // Tool

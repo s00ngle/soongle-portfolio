@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Skill } from "@/types/about";
-import { CheckCircle2 } from "lucide-react";
+// import { CheckCircle2 } from "lucide-react";
 import StackIcon from "tech-stack-icons";
 
 interface SkillCardProps {
@@ -11,14 +10,12 @@ interface SkillCardProps {
 }
 
 const SkillCard = ({ skill }: SkillCardProps) => {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, theme } = useTheme();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // Use theme instead of mounted state to check if hydration is complete
+  const isHydrated = theme !== undefined;
 
-  if (!mounted) {
+  if (!isHydrated) {
     return (
       <div className="flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-100/50 dark:bg-neutral-900/50 w-fit">
         <div className="w-5 h-5 bg-neutral-200 dark:bg-neutral-800 rounded-sm animate-pulse" />
