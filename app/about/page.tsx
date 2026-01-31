@@ -65,7 +65,6 @@ const AboutPage = () => {
 
   return (
     <>
-      <ScrollNavigator />
       <div className="flex flex-col gap-12 py-12">
         {/* Introduce */}
         <section id="introduce" className="flex flex-col gap-4">
@@ -121,6 +120,7 @@ const AboutPage = () => {
           )}
         </section>
       </div>
+      <ScrollNavigator />
     </>
   );
 };

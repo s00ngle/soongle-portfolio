@@ -10,6 +10,7 @@ const Logo = () => {
       <motion.div
         whileHover={{ scale: 1.2, rotate: -5 }}
         whileTap={{ scale: 0.95 }}
+        tabIndex={-1}
         className="text-neutral-900 dark:text-white hover:text-blue-500"
       >
         <CodeXml size={40} strokeWidth={2.5} />
