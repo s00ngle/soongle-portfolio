@@ -59,7 +59,7 @@ const Header = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="sm:hidden absolute top-[calc(100%+8px)] right-4 w-48 border border-gray-200 dark:border-gray-800 bg-white/90 dark:bg-black/90 backdrop-blur-xl shadow-2xl rounded-2xl overflow-hidden"
+            className="sm:hidden absolute top-[calc(100%+8px)] right-4 w-48 border border-(--border) bg-white/90 dark:bg-black/90 backdrop-blur-xl shadow-2xl rounded-2xl overflow-hidden"
           >
             <div className="p-2 flex flex-col">
               <Nav mobile onClick={() => setIsOpen(false)} />

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Github, Mail, Smartphone } from "lucide-react";
 import InfoButton from "./InfoButton";
