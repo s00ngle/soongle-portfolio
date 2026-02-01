@@ -12,5 +12,4 @@ export interface Project {
 
   period?: string; // "2024.01 - 2024.03"
   github?: string; // 깃허브 링크
-  detailPath?: string; // /projects/1 같은 상세페이지 경로
 }
