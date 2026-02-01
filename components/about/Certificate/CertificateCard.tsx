@@ -1,5 +1,3 @@
-"use client";
-
 import Badge from "@/components/common/Badge";
 import { Certificate } from "@/types/about";
 

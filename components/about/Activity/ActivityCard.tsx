@@ -1,5 +1,3 @@
-"use client";
-
 import { Activity } from "@/types/about";
 
 interface ActivityCardProps {

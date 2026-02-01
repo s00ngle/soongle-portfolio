@@ -1,5 +1,3 @@
-"use client";
-
 import Badge from "@/components/common/Badge";
 import { Award } from "@/types/about";
 

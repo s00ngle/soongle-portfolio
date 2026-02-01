@@ -1,5 +1,3 @@
-"use client";
-
 import { useTheme } from "next-themes";
 import { Skill } from "@/types/about";
 // import { CheckCircle2 } from "lucide-react";
@@ -11,8 +9,6 @@ interface SkillCardProps {
 
 const SkillCard = ({ skill }: SkillCardProps) => {
   const { resolvedTheme, theme } = useTheme();
-
-  // Use theme instead of mounted state to check if hydration is complete
   const isHydrated = theme !== undefined;
 
   if (!isHydrated) {

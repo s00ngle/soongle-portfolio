@@ -1,19 +1,34 @@
 "use client";
 
-import CertificateCard from "@/components/about/Certificate/CertificateCard";
 import { Certificate } from "@/types/about";
+import CertificateCard from "./CertificateCard";
+import FadeIn from "@/components/common/FadeIn";
+import Loading from "@/components/common/Loading";
+import { useQuery } from "@tanstack/react-query";
 
-interface CertificateContainerProps {
-  certificates: Certificate[];
-}
+const fetchCertificates = async () => {
+  const res = await fetch("/api/about/certificates");
+  return res.json();
+};
 
-const CertificateContainer = ({ certificates }: CertificateContainerProps) => {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {certificates.map((certificate, i) => (
-        <CertificateCard key={i} certificate={certificate} />
-      ))}
-    </div>
+const CertificateContainer = () => {
+  const { data: certificates = [], isLoading: loadingCertificates } = useQuery<
+    Certificate[]
+  >({
+    queryKey: ["certificates"],
+    queryFn: fetchCertificates,
+  });
+
+  return loadingCertificates ? (
+    <Loading />
+  ) : (
+    <FadeIn>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {certificates.map((certificate) => (
+          <CertificateCard key={certificate.title} certificate={certificate} />
+        ))}
+      </div>
+    </FadeIn>
   );
 };
 
