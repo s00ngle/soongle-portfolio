@@ -5,6 +5,8 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import MetaSection from "@/components/projects/details/MetaSection";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://soongle.kr";
+
 const ProjectDetailPage = async ({
   params,
 }: {
@@ -12,7 +14,7 @@ const ProjectDetailPage = async ({
 }) => {
   const { id } = await params;
 
-  const project = await fetch(`/api/projects/${id}`).then((res) => {
+  const project = await fetch(`${baseUrl}/api/projects/${id}`).then((res) => {
     if (!res.ok) notFound();
     return res.json();
   });
