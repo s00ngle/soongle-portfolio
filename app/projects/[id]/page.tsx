@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import MetaSection from "@/components/projects/details/MetaSection";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://soongle.kr";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
 const ProjectDetailPage = async ({
   params,
