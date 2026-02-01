@@ -2,32 +2,37 @@
 
 import { useQuery } from "@tanstack/react-query";
 
-import InfoContainer from "@/components/about/Introduce/InfoContainer";
+import Loading from "@/components/common/Loading";
+import FadeIn from "@/components/common/FadeIn";
+
+import InfoSection from "@/components/about/Introduce/InfoSection";
 import SkillContainer from "@/components/about/Skill/SkillContainer";
 import ActivityContainer from "@/components/about/Activity/ActivityContainer";
 import AwardContainer from "@/components/about/Award/AwardContainer";
 import CertificateContainer from "@/components/about/Certificate/CertificateContainer";
-
-import Loading from "@/components/common/Loading";
 import ScrollNavigator from "@/components/about/ScrollNavigator";
-import FadeIn from "@/components/common/FadeIn";
+import { delayTime } from "@/utils/delayTime";
 
 const fetchSkills = async () => {
+  await delayTime(1500);
   const res = await fetch("/api/about/skills");
   return res.json();
 };
 
 const fetchCertificates = async () => {
+  await delayTime(2500);
   const res = await fetch("/api/about/certificates");
   return res.json();
 };
 
 const fetchAwards = async () => {
+  await delayTime(3500);
   const res = await fetch("/api/about/awards");
   return res.json();
 };
 
 const fetchActivities = async () => {
+  await delayTime(4500);
   const res = await fetch("/api/about/activities");
   return res.json();
 };
@@ -64,10 +69,7 @@ const AboutPage = () => {
     <>
       <div className="flex flex-col gap-12 py-12">
         {/* Introduce */}
-        <section id="introduce" className="flex flex-col gap-4">
-          <h1 className="text-3xl font-bold tracking-tight">Introduce</h1>
-          <InfoContainer />
-        </section>
+        <InfoSection />
 
         {/* Tools & Skills */}
         <section id="skills" className="flex flex-col gap-6">
