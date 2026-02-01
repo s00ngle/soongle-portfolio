@@ -3,7 +3,7 @@ import ProfileInfo from "./ProfileInfo";
 
 const InfoSection = () => {
   return (
-    <section id="introduce" className="flex flex-col gap-4">
+    <section id="introduce" className="flex flex-col gap-6">
       <h1 className="text-3xl font-bold tracking-tight">Introduce</h1>
       <div className="flex flex-col gap-2 rounded-xl p-2 border border-neutral-200 dark:border-neutral-800 bg-neutral-100/50 dark:bg-neutral-900/50">
         {/*  Profile Information */}

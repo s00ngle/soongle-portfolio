@@ -1,14 +1,13 @@
 "use client";
 
+import ProjectCard from "./ProjectCard";
+import { Project } from "@/types/projects";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "@/components/common/Loading";
 import FadeIn from "@/components/common/FadeIn";
-import ProjectCard from "./ProjectCard";
-import { Project } from "@/types/projects"; // 타입 정의한 파일
 
 const fetchProjects = async (): Promise<Project[]> => {
   const response = await fetch("/api/projects");
-  await new Promise((resolve) => setTimeout(resolve, 1500));
   return response.json();
 };
 
