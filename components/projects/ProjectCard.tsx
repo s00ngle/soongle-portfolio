@@ -1,7 +1,7 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Project } from "@/types/projects";
+import Link from "next/link";
+import Image from "next/image";
+import Tag from "../common/Tag";
 
 interface ProjectCardProps {
   project: Project;
@@ -9,37 +9,31 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <motion.div
-      whileHover={{
-        y: -8,
-        boxShadow:
-          "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
-      }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex flex-col p-6 rounded-2xl border border-(--border) bg-neutral-50 dark:bg-neutral-900/50 hover:bg-neutral-100 dark:hover:bg-neutral-900"
-    >
-      <h3 className="text-xl font-bold mb-2 group-hover:text-blue-500 transition-colors">
-        {project.title}
-      </h3>
-      <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-4 flex-1">
-        {project.description}
-      </p>
-      <div className="flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="px-2 py-1 rounded-md bg-white dark:bg-neutral-800 text-[10px] sm:text-xs font-medium border border-(--border)"
-          >
-            {tag}
-          </span>
-        ))}
+    <Link href={`/projects/${project.id}`} aria-label={`View ${project.title}`}>
+      <div className="group relative flex flex-col p-2 rounded-2xl">
+        <div className="relative overflow-hidden rounded-xl mb-4 border border-(--border) aspect-video">
+          <Image
+            src={project.thumbnailImage}
+            alt={`${project.title} Thumbnail`}
+            fill
+            priority
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        <h3 className="w-fit text-xl font-bold mb-2 bg-linear-to-r from-blue-500 via-blue-400 to-purple-500 bg-clip-text text-neutral-900 dark:text-neutral-100 transition-all duration-300 group-hover:text-transparent">
+          {project.title}
+        </h3>
+        <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-4 flex-1">
+          {project.description}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <Tag key={tag}>{tag}</Tag>
+          ))}
+        </div>
       </div>
-      <a
-        href={project.link}
-        className="absolute inset-0 z-10"
-        aria-label={`View ${project.title}`}
-      />
-    </motion.div>
+    </Link>
   );
 };
 
