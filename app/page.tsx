@@ -2,6 +2,7 @@
 
 import Badge from "@/components/common/Badge";
 import { motion, cubicBezier } from "framer-motion";
+import Link from "next/link";
 
 export default function Home() {
   const containerVars = {
@@ -60,12 +61,18 @@ export default function Home() {
         싶습니다.
       </motion.p>
       <motion.div variants={itemVars} className="mt-10 flex gap-4">
-        <button className="px-6 py-2.5 rounded-full bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 font-medium hover:scale-105 transition-transform cursor-pointer">
+        <Link
+          href="/projects"
+          className="px-6 py-2.5 rounded-full bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 font-medium hover:scale-105 transition-transform cursor-pointer"
+        >
           프로젝트 보기
-        </button>
-        <button className="px-6 py-2.5 rounded-full border border-(--border) font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer">
+        </Link>
+        <Link
+          href="/contact"
+          className="px-6 py-2.5 rounded-full border border-neutral-300 dark:border-neutral-700 font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+        >
           문의하기
-        </button>
+        </Link>
       </motion.div>
     </motion.div>
   );

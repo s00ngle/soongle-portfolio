@@ -7,26 +7,25 @@ import SkillSection from "@/components/about/Skill/SkillSection";
 
 const AboutPage = () => {
   return (
-    <>
-      <div className="flex flex-col gap-12 py-12">
-        {/* Introduce */}
-        <InfoSection />
+    <div className="flex flex-col gap-12 py-12">
+      {/* Introduce */}
+      <InfoSection />
 
-        {/* Tools & Skills */}
-        <SkillSection />
+      {/* Tools & Skills */}
+      <SkillSection />
 
-        {/* Certificates */}
-        <CertificateSection />
+      {/* Certificates */}
+      <CertificateSection />
 
-        {/* Awards */}
-        <AwardSection />
+      {/* Awards */}
+      <AwardSection />
 
-        {/* Activities */}
-        <ActivitySection />
-      </div>
+      {/* Activities */}
+      <ActivitySection />
+
       {/*  네비게이터 */}
       <ScrollNavigator />
-    </>
+    </div>
   );
 };
 
