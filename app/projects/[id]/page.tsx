@@ -60,7 +60,7 @@ const ProjectDetailPage = async ({
           items={[
             { label: "역할", value: project.role },
             { label: "기간", value: project.period },
-            { label: "인원", value: `${project.members}명` },
+            { label: "인원", value: `${project.members}인` },
           ]}
         />
       </div>
