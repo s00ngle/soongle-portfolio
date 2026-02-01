@@ -15,6 +15,7 @@ const Nav = ({ mobile, onClick }: NavProps) => {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/projects", label: "Projects" },
+    // { href: "/test", label: "Test" },
   ];
 
   return (

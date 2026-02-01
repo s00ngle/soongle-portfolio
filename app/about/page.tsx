@@ -7,11 +7,11 @@ import FadeIn from "@/components/common/FadeIn";
 
 import InfoSection from "@/components/about/Introduce/InfoSection";
 import SkillContainer from "@/components/about/Skill/SkillContainer";
-import ActivityContainer from "@/components/about/Activity/ActivityContainer";
 import AwardContainer from "@/components/about/Award/AwardContainer";
 import CertificateContainer from "@/components/about/Certificate/CertificateContainer";
 import ScrollNavigator from "@/components/about/ScrollNavigator";
 import { delayTime } from "@/utils/delayTime";
+import ActivitySection from "@/components/about/Activity/ActivitySection";
 
 const fetchSkills = async () => {
   await delayTime(1500);
@@ -31,21 +31,10 @@ const fetchAwards = async () => {
   return res.json();
 };
 
-const fetchActivities = async () => {
-  await delayTime(4500);
-  const res = await fetch("/api/about/activities");
-  return res.json();
-};
-
 const AboutPage = () => {
   const { data: skills = [], isLoading: loadingSkills } = useQuery({
     queryKey: ["skills"],
     queryFn: fetchSkills,
-  });
-
-  const { data: activities = [], isLoading: loadingActivities } = useQuery({
-    queryKey: ["activities"],
-    queryFn: fetchActivities,
   });
 
   const { data: awards = [], isLoading: loadingAwards } = useQuery({
@@ -60,10 +49,7 @@ const AboutPage = () => {
 
   // 모든 데이터 로딩 완료 여부 확인
   const isAllDataLoaded =
-    !loadingSkills &&
-    !loadingActivities &&
-    !loadingAwards &&
-    !loadingCertificates;
+    !loadingSkills && !loadingAwards && !loadingCertificates;
 
   return (
     <>
@@ -108,16 +94,7 @@ const AboutPage = () => {
         </section>
 
         {/* Activities */}
-        <section id="activities" className="flex flex-col gap-4">
-          <h2 className="text-2xl font-semibold">Activities</h2>
-          {loadingActivities ? (
-            <Loading />
-          ) : (
-            <FadeIn>
-              <ActivityContainer activities={activities} />
-            </FadeIn>
-          )}
-        </section>
+        <ActivitySection />
       </div>
       {/* 모든 데이터 로딩 완료 후에만 네비게이터 표시 */}
       {isAllDataLoaded && <ScrollNavigator />}

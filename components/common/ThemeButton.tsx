@@ -18,7 +18,7 @@ const ThemeButton = () => {
     setTheme(resolvedTheme === "light" ? "dark" : "light");
   };
 
-  if (!mounted) return <div className="w-9 h-9" />;
+  if (!mounted) return <div className="w-10 h-10" />;
 
   const isDark = resolvedTheme === "dark";
   const hoverClass = isDark ? "hover:bg-neutral-800" : "hover:bg-neutral-100";
@@ -29,17 +29,15 @@ const ThemeButton = () => {
       onClick={toggleTheme}
       aria-label="Toggle Theme"
     >
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={resolvedTheme}
-          initial={{ y: -20, opacity: 0, rotate: -90 }}
-          animate={{ y: 0, opacity: 1, rotate: 0 }}
-          exit={{ y: 20, opacity: 0, rotate: 90 }}
-          transition={{ duration: 0.2, ease: "easeInOut" }}
-        >
-          {isDark ? <Moon size={28} /> : <Sun size={28} />}
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        key={resolvedTheme}
+        initial={{ y: -20, opacity: 0, rotate: -90 }}
+        animate={{ y: 0, opacity: 1, rotate: 0 }}
+        exit={{ y: 20, opacity: 0, rotate: 90 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
+        {isDark ? <Moon size={28} /> : <Sun size={28} />}
+      </motion.div>
     </button>
   );
 };
