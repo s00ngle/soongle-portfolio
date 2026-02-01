@@ -4,14 +4,16 @@ import { Project } from "@/types/projects";
 
 export const GET = async (
   req: Request,
-  { params }: { params: { id: string } },
+  context: { params: Promise<{ id: string }> },
 ): Promise<NextResponse<Project | { error: string }>> => {
-  const id = parseInt(params.id, 10);
-  if (isNaN(id)) {
+  const { id } = await context.params;
+  const projectId = parseInt(id, 10);
+
+  if (isNaN(projectId)) {
     return NextResponse.json({ error: "Invalid project id" }, { status: 400 });
   }
 
-  const project = projects.find((p) => p.id === id);
+  const project = projects.find((p) => p.id === projectId);
   if (!project) {
     return NextResponse.json({ error: "Project not found" }, { status: 404 });
   }
