@@ -1,32 +1,6 @@
-"use client";
-
-import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
-
 import ProjectContainer from "@/components/projects/ProjectContainer";
-import Loading from "@/components/common/Loading";
-
-const FadeIn = ({ children }: { children: React.ReactNode }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 10 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    {children}
-  </motion.div>
-);
-
-const fetchProjects = async () => {
-  const response = await fetch("/api/projects");
-  return response.json();
-};
 
 const ProjectsPage = () => {
-  const { data: projects = [], isLoading } = useQuery({
-    queryKey: ["projects"],
-    queryFn: fetchProjects,
-  });
-
   return (
     <div className="flex flex-col gap-12 py-12">
       <section className="flex flex-col gap-4">
@@ -37,13 +11,8 @@ const ProjectsPage = () => {
         </p>
       </section>
 
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <FadeIn>
-          <ProjectContainer projects={projects} />
-        </FadeIn>
-      )}
+      {/* 프로젝트 내용 */}
+      <ProjectContainer />
     </div>
   );
 };

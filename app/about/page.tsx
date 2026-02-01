@@ -1,7 +1,6 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
 
 import InfoContainer from "@/components/about/Introduce/InfoContainer";
 import SkillContainer from "@/components/about/Skill/SkillContainer";
@@ -11,24 +10,15 @@ import CertificateContainer from "@/components/about/Certificate/CertificateCont
 
 import Loading from "@/components/common/Loading";
 import ScrollNavigator from "@/components/about/ScrollNavigator";
-
-const FadeIn = ({ children }: { children: React.ReactNode }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 10 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    {children}
-  </motion.div>
-);
+import FadeIn from "@/components/common/FadeIn";
 
 const fetchSkills = async () => {
   const res = await fetch("/api/about/skills");
   return res.json();
 };
 
-const fetchActivities = async () => {
-  const res = await fetch("/api/about/activities");
+const fetchCertificates = async () => {
+  const res = await fetch("/api/about/certificates");
   return res.json();
 };
 
@@ -37,8 +27,8 @@ const fetchAwards = async () => {
   return res.json();
 };
 
-const fetchCertificates = async () => {
-  const res = await fetch("/api/about/certificates");
+const fetchActivities = async () => {
+  const res = await fetch("/api/about/activities");
   return res.json();
 };
 
