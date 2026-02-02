@@ -4,6 +4,9 @@ import { Providers } from "@/providers/Providers";
 import Header from "@/components/layout/Header";
 import ScrollToTop from "@/components/common/ScrollToTop";
 import localFont from "next/font/local";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const pretendard = localFont({
   src: "../public/fonts/PretendardVariable.woff2",
@@ -79,7 +82,10 @@ export default function RootLayout({
           <main className="px-4 sm:px-6">{children}</main>
           <ScrollToTop />
         </Providers>
+        <Analytics />
+        <SpeedInsights />
       </body>
+      <GoogleAnalytics gaId="G-BXGNKZ9Z5M" />
     </html>
   );
 }
