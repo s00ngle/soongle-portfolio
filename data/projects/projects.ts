@@ -1,6 +1,6 @@
-import { Project } from "@/types/projects";
+import { ProjectDetail } from "@/types/projects";
 
-export const projects: Project[] = [
+export const projects: ProjectDetail[] = [
   {
     id: 1,
     title: "포트폴리오",
@@ -173,5 +173,49 @@ export const projects: Project[] = [
     thumbnailImage: "/images/projects/rapid.png",
     period: "2015.12 - 2016.09",
     github: "",
+  },
+  {
+    id: 11,
+    title: "테스트 프로젝트",
+    description: "디버깅용 테스트 프로젝트입니다",
+    tags: ["Test", "Component", "Design", "Debug"],
+    link: "",
+    members: 1,
+    role: "테스트",
+    // thumbnailImage: "/images/projects/test.png",
+    period: "2026.01 - 2026.02",
+    github: "",
+
+    contents: [
+      {
+        type: "text",
+        content: "디버깅용 테스트 프로젝트입니다",
+      },
+      {
+        type: "image",
+        src: "/images/projects/soongle-portfolio.png",
+        caption: "디버깅용 테스트 프로젝트입니다",
+      },
+      {
+        type: "imageText",
+        src: "/images/projects/soongle-portfolio.png",
+        content: "디버깅용 테스트 프로젝트입니다",
+        direction: "left",
+      },
+      {
+        type: "code",
+        language: "tsx",
+        code: `export const fetchProjects = async () => {
+  const res = await fetch("/api/projects");
+  const data = await res.json();
+
+  return data;
+};`,
+      },
+      {
+        type: "list",
+        items: ["Item 1", "Item 2", "Item 3"],
+      },
+    ],
   },
 ];

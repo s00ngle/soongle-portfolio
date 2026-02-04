@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { projects } from "@/data/projects/projects";
-import { Project } from "@/types/projects";
+import { ProjectDetail } from "@/types/projects";
 
 export const GET = async (
   req: Request,
   context: { params: Promise<{ id: string }> },
-): Promise<NextResponse<Project | { error: string }>> => {
+): Promise<NextResponse<ProjectDetail | { error: string }>> => {
   const { id } = await context.params;
   const projectId = parseInt(id, 10);
 
@@ -18,5 +18,5 @@ export const GET = async (
     return NextResponse.json({ error: "Project not found" }, { status: 404 });
   }
 
-  return NextResponse.json<Project>(project);
+  return NextResponse.json<ProjectDetail>(project);
 };

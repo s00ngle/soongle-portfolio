@@ -1,26 +1,33 @@
-import { Project } from "@/types/projects";
 import Link from "next/link";
 import Image from "next/image";
 import Tag from "../common/Tag";
+import { ProjectDetail } from "@/types/projects";
 
 interface ProjectCardProps {
-  project: Project;
+  project: ProjectDetail;
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <Link href={`/projects/${project.id}`} aria-label={`View ${project.title}`}>
       <div className="group relative flex flex-col p-2 rounded-2xl">
-        <div className="relative overflow-hidden rounded-xl mb-4 border border-(--border) aspect-video">
-          <Image
-            src={project.thumbnailImage}
-            alt={`${project.title} Thumbnail`}
-            fill
-            priority
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        </div>
+        {project.thumbnailImage ? (
+          <div className="relative overflow-hidden rounded-xl mb-4 border border-(--border) aspect-video">
+            <Image
+              src={project.thumbnailImage}
+              alt={`${project.title} Thumbnail`}
+              fill
+              priority
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        ) : (
+          <div className="rounded-xl mb-4 border border-(--border) aspect-video flex items-center justify-center">
+            <p className="text-neutral-500">이미지가 없습니다.</p>
+          </div>
+        )}
+
         <h3 className="w-fit text-xl font-bold mb-2 bg-linear-to-r from-blue-500 via-blue-400 to-purple-500 bg-clip-text text-neutral-900 dark:text-neutral-100 transition-all duration-300 group-hover:text-transparent">
           {project.title}
         </h3>
