@@ -4,6 +4,8 @@ import ActivitySection from "@/components/about/Activity/ActivitySection";
 import CertificateSection from "@/components/about/Certificate/CertificateSection";
 import AwardSection from "@/components/about/Award/AwardSection";
 import SkillSection from "@/components/about/Skill/SkillSection";
+import { Suspense } from "react";
+import Loading from "@/components/common/Loading";
 
 const AboutPage = () => {
   return (
@@ -12,16 +14,24 @@ const AboutPage = () => {
       <InfoSection />
 
       {/* Tools & Skills */}
-      <SkillSection />
+      <Suspense fallback={<Loading />}>
+        <SkillSection />
+      </Suspense>
 
       {/* Certificates */}
-      <CertificateSection />
+      <Suspense fallback={<Loading />}>
+        <CertificateSection />
+      </Suspense>
 
       {/* Awards */}
-      <AwardSection />
+      <Suspense fallback={<Loading />}>
+        <AwardSection />
+      </Suspense>
 
       {/* Activities */}
-      <ActivitySection />
+      <Suspense fallback={<Loading />}>
+        <ActivitySection />
+      </Suspense>
 
       {/*  네비게이터 */}
       <ScrollNavigator />
