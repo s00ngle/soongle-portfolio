@@ -13,6 +13,7 @@ const ProfileInfo = () => {
           width={120}
           height={120}
           className="rounded-lg h-auto w-auto"
+          priority
         />
         <div className="flex flex-col">
           <h2 className="font-bold text-4xl whitespace-nowrap mb-4">김용순</h2>
