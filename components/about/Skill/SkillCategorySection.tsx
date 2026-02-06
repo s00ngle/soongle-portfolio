@@ -1,3 +1,5 @@
+"use client";
+
 import { ChevronDown } from "lucide-react";
 import SkillCard from "@/components/about/Skill/SkillCard";
 import { Skill, SkillCategory } from "@/types/about";

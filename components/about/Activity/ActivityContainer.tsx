@@ -1,5 +1,3 @@
-"use client";
-
 import { Activity } from "@/types/about";
 import ActivityCard from "./ActivityCard";
 import FadeIn from "@/components/common/FadeIn";

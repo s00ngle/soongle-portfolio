@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import MetaSection from "./MetaSection";
 import Tag from "@/components/common/Tag";

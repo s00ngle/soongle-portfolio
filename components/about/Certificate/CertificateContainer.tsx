@@ -1,5 +1,3 @@
-"use client";
-
 import { Certificate } from "@/types/about";
 import CertificateCard from "./CertificateCard";
 import FadeIn from "@/components/common/FadeIn";

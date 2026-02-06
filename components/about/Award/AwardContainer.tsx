@@ -1,5 +1,3 @@
-"use client";
-
 import AwardCard from "@/components/about/Award/AwardCard";
 import FadeIn from "@/components/common/FadeIn";
 import { Award } from "@/types/about";

@@ -1,5 +1,3 @@
-"use client";
-
 import { SkillCategorySection } from "./SkillCategorySection";
 import { Skill, SKILL_CATEGORIES } from "@/types/about";
 import FadeIn from "@/components/common/FadeIn";

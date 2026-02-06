@@ -1,5 +1,3 @@
-"use client";
-
 import ProjectCard from "./ProjectCard";
 import { Project } from "@/types/projects";
 import FadeIn from "@/components/common/FadeIn";
