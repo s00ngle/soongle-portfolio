@@ -75,7 +75,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className="scrollbar-hide">
       <body
         className={`${pretendard.variable} antialiased mx-auto w-full max-w-4xl min-h-screen min-w-80`}
-        suppressHydrationWarning
       >
         <Providers>
           <Header />
