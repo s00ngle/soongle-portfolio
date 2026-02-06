@@ -1,9 +1,8 @@
-import ProjectContainer from "@/components/projects/ProjectContainer";
-import { projectService } from "@/services/projectService";
+import ProjectListSection from "@/components/projects/ProjectListSection";
+import { Suspense } from "react";
+import Loading from "@/components/common/Loading";
 
-const ProjectsPage = async () => {
-  const projects = await projectService.getAllProjects();
-
+const ProjectsPage = () => {
   return (
     <div className="flex flex-col py-12">
       <section className="flex flex-col gap-6">
@@ -15,7 +14,9 @@ const ProjectsPage = async () => {
         </p>
 
         {/* 프로젝트 내용 */}
-        <ProjectContainer projects={projects} />
+        <Suspense fallback={<Loading className="py-24" />}>
+          <ProjectListSection />
+        </Suspense>
       </section>
     </div>
   );

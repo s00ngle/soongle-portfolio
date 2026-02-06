@@ -1,8 +1,8 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import ProjectInfo from "@/components/projects/details/ProjectInfo";
-import { projectService } from "@/services/projectService";
-import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import Loading from "@/components/common/Loading";
+import ProjectDetailContainer from "@/components/projects/details/ProjectDetailContainer";
 
 const ProjectDetailPage = async ({
   params,
@@ -10,11 +10,6 @@ const ProjectDetailPage = async ({
   params: Promise<{ id: string }>;
 }) => {
   const { id } = await params;
-  const project = await projectService.getProjectById(id);
-
-  if (!project) {
-    notFound();
-  }
 
   return (
     <div className="relative flex flex-col gap-6 py-12">
@@ -26,7 +21,9 @@ const ProjectDetailPage = async ({
         <ArrowLeft className="w-4 h-4" /> 목록으로
       </Link>
 
-      <ProjectInfo project={project} />
+      <Suspense fallback={<Loading className="py-24" />}>
+        <ProjectDetailContainer id={id} />
+      </Suspense>
     </div>
   );
 };
