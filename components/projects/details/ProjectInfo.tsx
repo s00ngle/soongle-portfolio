@@ -4,61 +4,18 @@ import Image from "next/image";
 import MetaSection from "./MetaSection";
 import Tag from "@/components/common/Tag";
 import { ProjectDetail } from "@/types/projects";
-import { useQuery } from "@tanstack/react-query";
 import FadeIn from "@/components/common/FadeIn";
-import Loading from "@/components/common/Loading";
 import TextBlock from "../../common/contents/TextBlock";
 import ImageBlock from "../../common/contents/ImageBlock";
 import ImageTextBlock from "../../common/contents/ImageTextBlock";
 import CodeBlock from "../../common/contents/CodeBlock";
 import ListBlock from "../../common/contents/ListBlock";
 
-const fetchProjectById = async (id: string): Promise<ProjectDetail> => {
-  const res = await fetch(`/api/projects/${id}`);
-  if (!res.ok) {
-    throw new Error("프로젝트를 불러오는데 실패했습니다");
-  }
-  return res.json();
-};
-
 interface ProjectInfoProps {
-  projectId: string;
+  project: ProjectDetail;
 }
 
-const ProjectInfo = ({ projectId }: ProjectInfoProps) => {
-  const {
-    data: project,
-    isLoading,
-    error,
-  } = useQuery<ProjectDetail>({
-    queryKey: ["project", projectId],
-    queryFn: () => fetchProjectById(projectId),
-  });
-
-  if (isLoading) {
-    return (
-      <div className="aspect-video md:aspect-[2.5/1] flex justify-center items-center">
-        <Loading />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="text-center py-12">
-        <p className="text-red-500">프로젝트를 불러오는데 실패했습니다.</p>
-      </div>
-    );
-  }
-
-  if (!project) {
-    return (
-      <div className="text-center py-12">
-        <p className="text-neutral-500">프로젝트를 찾을 수 없습니다.</p>
-      </div>
-    );
-  }
-
+const ProjectInfo = ({ project }: ProjectInfoProps) => {
   return (
     <FadeIn>
       <div className="flex flex-col gap-8">
@@ -67,7 +24,6 @@ const ProjectInfo = ({ projectId }: ProjectInfoProps) => {
 
         <div className="flex flex-col">
           {/* 썸네일 */}
-          {/* 1. 썸네일이 없으면 아무것도 안 보여주는 버전 */}
           {project.thumbnailImage && (
             <div className="relative mb-6 aspect-video md:aspect-[2.5/1] rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-800">
               <Image

@@ -2,23 +2,13 @@
 
 import ProjectCard from "./ProjectCard";
 import { Project } from "@/types/projects";
-import { useQuery } from "@tanstack/react-query";
-import Loading from "@/components/common/Loading";
 import FadeIn from "@/components/common/FadeIn";
 
-const fetchProjects = async (): Promise<Project[]> => {
-  const response = await fetch("/api/projects");
-  return response.json();
-};
+interface ProjectContainerProps {
+  projects: Project[];
+}
 
-const ProjectContainer = () => {
-  const { data: projects = [], isLoading } = useQuery<Project[]>({
-    queryKey: ["projects"],
-    queryFn: fetchProjects,
-  });
-
-  if (isLoading) return <Loading />;
-
+const ProjectContainer = ({ projects }: ProjectContainerProps) => {
   return (
     <FadeIn>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

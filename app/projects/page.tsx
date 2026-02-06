@@ -1,6 +1,9 @@
 import ProjectContainer from "@/components/projects/ProjectContainer";
+import { projectService } from "@/services/projectService";
 
-const ProjectsPage = () => {
+const ProjectsPage = async () => {
+  const projects = await projectService.getAllProjects();
+
   return (
     <div className="flex flex-col py-12">
       <section className="flex flex-col gap-6">
@@ -12,7 +15,7 @@ const ProjectsPage = () => {
         </p>
 
         {/* 프로젝트 내용 */}
-        <ProjectContainer />
+        <ProjectContainer projects={projects} />
       </section>
     </div>
   );
