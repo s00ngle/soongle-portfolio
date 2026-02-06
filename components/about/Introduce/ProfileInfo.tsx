@@ -10,9 +10,10 @@ const ProfileInfo = () => {
         <Image
           src={ProfileImage}
           alt="profile"
-          width={120}
-          height={120}
-          className="rounded-lg h-auto w-auto"
+          width={1000}
+          height={1000}
+          quality={100}
+          className="rounded-lg w-[128px] h-[147px] object-cover"
           priority
         />
         <div className="flex flex-col">
